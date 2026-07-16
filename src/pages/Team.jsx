@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, CloseIcon, PageHead } from "../primitives.jsx";
+import { ImgPlate, ArrowRight, CloseIcon, PageHead } from "../primitives.jsx";
 import { PRACTICE_AREAS, TEAM } from "../data.js";
 
 function Team({ go }) {
@@ -63,10 +63,9 @@ function Team({ go }) {
             {filtered.map((t) => (
               <button key={t.id} className="team-card" onClick={() => setActive(t)}>
                 <div className="team-card__photo">
-                  <div className="portrait-mark" aria-hidden="true">
-                    <span>{t.name.split(" ").map((part) => part[0]).slice(0, 2).join("")}</span>
-                    <svg viewBox="0 0 180 220" fill="none"><path d="M-10 198C26 198 34 150 68 150s28-52 62-52 34-66 76-66" /><circle cx="68" cy="150" r="3" /><circle cx="130" cy="98" r="3" /></svg>
-                  </div>
+                  <ImgPlate
+                    caption={`${t.name.split(" ")[0]} · portrait`}
+                  />
                 </div>
                 <h3 className="team-card__name">{t.name}</h3>
                 <div className="team-card__role">{t.role} · {t.location}</div>
@@ -88,17 +87,26 @@ function Team({ go }) {
               </button>
             </div>
             <div className="slideover__hero">
-              <div className="portrait-mark portrait-mark--profile" aria-hidden="true">
-                <span>{active.name.split(" ").map((part) => part[0]).slice(0, 2).join("")}</span>
-                <svg viewBox="0 0 180 220" fill="none"><path d="M-10 198C26 198 34 150 68 150s28-52 62-52 34-66 76-66" /><circle cx="68" cy="150" r="3" /><circle cx="130" cy="98" r="3" /></svg>
-              </div>
+              <ImgPlate
+                caption={`${active.name.split(" ")[0]} · portrait`}
+              />
               <div>
                 <div className="section-num" style={{ marginBottom: 12 }}>{active.role}</div>
                 <h2 className="slideover__name display">{active.name}</h2>
-                <div className="slideover__role">{active.location}{active.bar ? ` · Called to bar ${active.bar}` : ""}</div>
+                <div className="slideover__role">{active.location} · Called to bar {active.bar}</div>
                 <div className="slideover__meta">
-                  {active.practice.length ? <div className="slideover__meta-row"><span>Practice</span><span>{active.practice.map((id) => PRACTICE_AREAS.find((p) => p.id === id)?.title).filter(Boolean).join(" · ")}</span></div> : null}
-                  {active.bar ? <div className="slideover__meta-row"><span>Bar</span><span>Nigerian Bar Association · {active.bar}</span></div> : null}
+                  <div className="slideover__meta-row">
+                    <span>Practice</span>
+                    <span>{active.practice.map((id) => PRACTICE_AREAS.find((p) => p.id === id)?.title).filter(Boolean).join(" · ")}</span>
+                  </div>
+                  <div className="slideover__meta-row">
+                    <span>Bar</span>
+                    <span>Nigerian Bar Association · {active.bar}</span>
+                  </div>
+                  <div className="slideover__meta-row">
+                    <span>Languages</span>
+                    <span>English · Yoruba</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,15 +115,15 @@ function Team({ go }) {
                 <h4>Biography</h4>
                 <p>{active.bio}</p>
               </div>
-              {active.education.length ? <div>
+              <div>
                 <h4>Education</h4>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
                   {active.education.map((e, i) => (
                     <li key={i} style={{ fontSize: 14, paddingBottom: 8, borderBottom: "1px solid var(--rule)" }}>{e}</li>
                   ))}
                 </ul>
-              </div> : null}
-              {active.cases.length ? <div>
+              </div>
+              <div>
                 <h4>Affiliations &amp; memberships</h4>
                 <div className="slideover__cases">
                   {active.cases.map((c, i) => (
@@ -125,12 +133,12 @@ function Team({ go }) {
                     </div>
                   ))}
                 </div>
-              </div> : null}
+              </div>
               <div style={{ display: "flex", gap: 12, paddingTop: 16, borderTop: "1px solid var(--rule)" }}>
                 <a href="#/contact" className="btn btn--primary" onClick={(e) => { e.preventDefault(); setActive(null); go("contact"); }}>
                   Engage {active.name.split(" ")[0]} <ArrowRight />
                 </a>
-                {active.linkedin ? <a href={active.linkedin} target="_blank" rel="noreferrer" className="btn btn--ghost">LinkedIn profile</a> : null}
+                <a href={`mailto:${active.id}@pragattorneys.ng`} className="btn btn--ghost">Email directly</a>
               </div>
             </div>
           </>

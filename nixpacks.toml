@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+# No [start] section needed here — in Dokploy, set "Publish Directory" to
+# "dist" in the app's Build settings. Dokploy will then serve the built
+# static files via an NGINX-optimized container instead of running Node.

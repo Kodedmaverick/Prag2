@@ -19,15 +19,8 @@ function Home({ go }) {
     <main className="page-enter">
       {/* hero */}
       <section className="hero-home">
-        <img className="hero-home__bg" src="/assets/prag-hero-editorial.png" alt="Nigerian legal professionals reviewing commercial documents in a Lagos office" />
+        <img className="hero-home__bg" src="/assets/photo-lagos.png" alt="Lagos skyline at dusk, viewed across the lagoon" />
         <div className="hero-home__scrim" aria-hidden="true"></div>
-        <div className="route-lines route-lines--hero" aria-hidden="true">
-          <svg viewBox="0 0 780 520" fill="none">
-            <path className="route-lines__path" d="M-40 440C120 440 132 312 260 312S360 188 492 188 622 70 820 70" />
-            <path className="route-lines__path route-lines__path--soft" d="M-20 482C160 482 170 354 302 354S410 232 540 232 674 118 816 118" />
-            <circle cx="260" cy="312" r="5" /><circle cx="492" cy="188" r="5" />
-          </svg>
-        </div>
         <div className="container hero-home__inner">
           <p className="hero-home__eyebrow">Nigerian commercial law · Est. 2011</p>
           <h1 className="hero-home__title">
@@ -48,13 +41,6 @@ function Home({ go }) {
         </div>
       </section>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee__track">
-          <span>Commercially grounded</span><i></i><span>Legally precise</span><i></i><span>Human by design</span><i></i>
-          <span>Commercially grounded</span><i></i><span>Legally precise</span><i></i><span>Human by design</span><i></i>
-        </div>
-      </div>
-
       {/* credibility strip */}
       <section className="container" style={{ paddingBlock: "0" }}>
         <div className="stats">
@@ -68,7 +54,7 @@ function Home({ go }) {
       </section>
 
       {/* positioning */}
-      <section className="section reveal">
+      <section className="section">
         <div className="container">
           <div className="positioning">
             <p className="section-num">Who we are</p>
@@ -90,27 +76,8 @@ function Home({ go }) {
         </div>
       </section>
 
-
-      <section className="section editorial-story reveal" aria-labelledby="working-title">
-        <div className="container editorial-story__grid">
-          <div className="editorial-story__media">
-            <img src="/assets/prag-collaboration-editorial.png" alt="Legal advisers and a client working through a commercial agreement" />
-            <span className="editorial-story__index">01 / The work</span>
-          </div>
-          <div className="editorial-story__copy">
-            <span className="section-num">Close to the detail</span>
-            <h2 id="working-title" className="display">Advice should move a matter <em>forward.</em></h2>
-            <p>Our work begins with the commercial outcome, then follows every legal route required to reach it. Clear thinking, senior attention and an honest view of risk come as standard.</p>
-            <a href="#/about" className="link-arrow" onClick={(e) => { e.preventDefault(); go("about"); }}>See how we work <ArrowRight /></a>
-          </div>
-          <div className="editorial-story__line" aria-hidden="true">
-            <svg viewBox="0 0 300 220" fill="none"><path d="M8 206C8 128 78 144 78 78s62-64 118-64h96" /><circle cx="78" cy="78" r="4" /></svg>
-          </div>
-        </div>
-      </section>
-
       {/* expertise — indexed list */}
-      <section className="section reveal" style={{ paddingTop: "0" }}>
+      <section className="section" style={{ paddingTop: "0" }}>
         <div className="container">
           <div className="section-head">
             <div>
@@ -139,7 +106,7 @@ function Home({ go }) {
       </section>
 
       {/* client challenges */}
-      <section className="section challenges reveal">
+      <section className="section challenges">
         <div className="container">
           <div className="section-head">
             <div>
@@ -165,7 +132,7 @@ function Home({ go }) {
       </section>
 
       {/* how prag works — manifesto */}
-      <section className="section reveal">
+      <section className="section">
         <div className="container">
           <div className="section-head">
             <div>
@@ -190,7 +157,7 @@ function Home({ go }) {
       </section>
 
       {/* people */}
-      <section className="section section--tight reveal">
+      <section className="section section--tight">
         <div className="container">
           <div className="section-head">
             <div>
@@ -204,7 +171,7 @@ function Home({ go }) {
             </p>
           </div>
           <div className="people-row">
-            {TEAM.slice(0, 3).map((t) => (
+            {TEAM.map((t) => (
               <button className="person" key={t.id} onClick={() => go("team")}>
                 <span className="person__photo">
                   <ImgPlate caption={`${t.name.split(" ")[0]} · portrait`} />
@@ -226,7 +193,7 @@ function Home({ go }) {
       </section>
 
       {/* insights */}
-      <section className="section reveal">
+      <section className="section">
         <div className="container">
           <div className="section-head">
             <div>

@@ -61,12 +61,12 @@ function Practices({ go }) {
         </div>
       </section>
 
-      {/* editorial image band */}
-      <section className="section section--tight reveal">
+      {/* courtroom image band */}
+      <section className="section section--tight">
         <div className="container">
           <ImgPlate
-            src="/assets/prag-collaboration-editorial.png"
-            alt="Nigerian advisers collaborating over a commercial document"
+            src="/assets/photo-court.png"
+            alt="Prag advocates in a Nigerian superior court"
             style={{ aspectRatio: "21/9", width: "100%" }}
           />
         </div>
