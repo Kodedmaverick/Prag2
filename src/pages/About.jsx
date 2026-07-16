@@ -20,8 +20,8 @@ function About({ go }) {
           <div className="split">
             <ImgPlate
               className="split__media"
-              src="/assets/photo-boardroom.png"
-              alt="Prag Attorneys boardroom"
+              src="/assets/prag-collaboration-editorial.png"
+              alt="Nigerian legal professionals reviewing a commercial agreement"
             />
             <div className="split__body">
               <div className="section-num" style={{ marginBottom: 16 }}>Origin</div>
