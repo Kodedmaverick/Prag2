@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight } from "./primitives.jsx";
+import { PRACTICE_AREAS } from "./data.js";
 
 function Header({ route, go, brandTag }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expertiseOpen, setExpertiseOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -14,11 +16,17 @@ function Header({ route, go, brandTag }) {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setExpertiseOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   const items = [
     ["home", "Home"],
     ["about", "About"],
-    ["practices", "Practices"],
     ["team", "Team"],
     ["insights", "Insights"],
     ["careers", "Careers"],
@@ -26,6 +34,7 @@ function Header({ route, go, brandTag }) {
 
   const navTo = (id) => {
     setMenuOpen(false);
+    setExpertiseOpen(false);
     go(id);
   };
 
@@ -37,7 +46,49 @@ function Header({ route, go, brandTag }) {
           <img className="brand__img" src="/assets/prag-logo.png" alt="Prag Attorneys & Consultants" />
         </a>
         <nav className="nav nav--desktop" aria-label="Primary">
-          {items.map(([id, label]) => (
+          {items.slice(0, 2).map(([id, label]) => (
+            <a
+              key={id}
+              href={"#/" + id}
+              className={"nav__item" + (route === id ? " is-active" : "")}
+              onClick={(e) => { e.preventDefault(); navTo(id); }}
+            >
+              {label}
+            </a>
+          ))}
+          <div
+            className={"nav__dropdown" + (expertiseOpen ? " is-open" : "")}
+            onMouseEnter={() => setExpertiseOpen(true)}
+            onMouseLeave={() => setExpertiseOpen(false)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setExpertiseOpen(false);
+            }}
+          >
+            <button
+              className={"nav__item nav__dropdown-trigger" + (route === "practices" ? " is-active" : "")}
+              type="button"
+              aria-expanded={expertiseOpen}
+              aria-haspopup="true"
+              onClick={() => setExpertiseOpen((open) => !open)}
+            >
+              Expertise <span className="nav__chevron" aria-hidden="true"></span>
+            </button>
+            <div className="nav__dropdown-menu" aria-hidden={!expertiseOpen}>
+              <a href="#/practices" className="nav__dropdown-all" onClick={(e) => { e.preventDefault(); navTo("practices"); }}>
+                View all expertise <ArrowRight />
+              </a>
+              {PRACTICE_AREAS.map((practice) => (
+                <a
+                  key={practice.id}
+                  href={`#/practices/${practice.id}`}
+                  onClick={(e) => { e.preventDefault(); navTo(`practices/${practice.id}`); }}
+                >
+                  <span>{practice.num}</span>{practice.title}
+                </a>
+              ))}
+            </div>
+          </div>
+          {items.slice(2).map(([id, label]) => (
             <a
               key={id}
               href={"#/" + id}
@@ -66,7 +117,35 @@ function Header({ route, go, brandTag }) {
       </div>
       <div className={"nav__panel" + (menuOpen ? " is-open" : "")} aria-hidden={!menuOpen}>
         <nav className="nav__panel-inner" aria-label="Mobile">
-          {items.map(([id, label]) => (
+          {items.slice(0, 2).map(([id, label]) => (
+            <a
+              key={id}
+              href={"#/" + id}
+              className={"nav__panel-item" + (route === id ? " is-active" : "")}
+              onClick={(e) => { e.preventDefault(); navTo(id); }}
+            >
+              {label}
+            </a>
+          ))}
+          <div className={"nav__panel-expertise" + (expertiseOpen ? " is-open" : "")}>
+            <button
+              type="button"
+              className={"nav__panel-item nav__panel-expertise-trigger" + (route === "practices" ? " is-active" : "")}
+              aria-expanded={expertiseOpen}
+              onClick={() => setExpertiseOpen((open) => !open)}
+            >
+              Expertise <span className="nav__chevron" aria-hidden="true"></span>
+            </button>
+            <div className="nav__panel-practices">
+              <a href="#/practices" onClick={(e) => { e.preventDefault(); navTo("practices"); }}>All practice areas</a>
+              {PRACTICE_AREAS.map((practice) => (
+                <a key={practice.id} href={`#/practices/${practice.id}`} onClick={(e) => { e.preventDefault(); navTo(`practices/${practice.id}`); }}>
+                  <span>{practice.num}</span>{practice.title}
+                </a>
+              ))}
+            </div>
+          </div>
+          {items.slice(2).map(([id, label]) => (
             <a
               key={id}
               href={"#/" + id}

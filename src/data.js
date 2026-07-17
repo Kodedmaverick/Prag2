@@ -3,6 +3,8 @@ export const PRACTICE_AREAS = [
     id: "corporate",
     num: "01",
     title: "Corporate & Commercial",
+    image: "/assets/prag-hero-editorial.png",
+    imageAlt: "Nigerian commercial-law professionals reviewing transaction documents",
     short: "Litigation, ADR, IP, and the company-secretarial work that quietly powers Nigerian business.",
     long: "We have represented clients in all superior courts of record in Nigeria, resolving commercial disputes timeously — often using the Case Management Conference to draw up innovative settlements between our clients and their counterparties. We also serve as company secretary to a range of organisations, with statutory filings handled to a turnaround time we continue to set, and break, the record on.",
     bullets: [
@@ -17,6 +19,8 @@ export const PRACTICE_AREAS = [
     id: "estate",
     num: "02",
     title: "Estate Planning & Conveyancing",
+    image: "/assets/practice-real-estate.png",
+    imageAlt: "Property professionals reviewing plans at a contemporary Lagos development",
     short: "Pace-setting real estate counsel across Lagos, Abuja and Ogun State.",
     long: "We have been consistently adjudged as pace setters in real-estate transactions. Our team leverages numerous contacts at the Lands Registry, energy, and an in-depth practical knowledge of the Lagos, Abuja and Ogun property markets to provide perfection of title and high-level real-estate investigation services with an unrivalled turnaround time. We have developed novel agreements registered at the Lands Registry and the Ministry of Justice — notably a Bill of Sale through which moveable assets of our clients were securitised.",
     bullets: [
@@ -31,6 +35,8 @@ export const PRACTICE_AREAS = [
     id: "tech",
     num: "03",
     title: "Information Technology Advisory",
+    image: "/assets/practice-technology.png",
+    imageAlt: "Nigerian technology and legal advisers reviewing a digital-payments product",
     short: "VAS, payment switching, and the Nigerian regulatory perimeter for digital services.",
     long: "Our firm acts for a Value Added Service Company (VAS), drafting agreements between our client and telecommunications operators across Africa, and with the artistes whose content runs on its platform. We have developed operational codes aligned with the Nigerian Communications Commission Act, and recently obtained a lottery licence enabling our client's mobile sports-lottery platform. We also represent a major Nigerian electronic-payments provider — and were germane in obtaining its CBN licence as a Payment Terminal Service Provider — and are currently advising a payment-switching company through its CBN licensing process.",
     bullets: [
@@ -45,6 +51,8 @@ export const PRACTICE_AREAS = [
     id: "tax",
     num: "04",
     title: "Taxation Advisory",
+    image: "/assets/prag-collaboration-editorial.png",
+    imageAlt: "Legal and tax advisers working through a commercial document",
     short: "A grey but germane area of law — handled by a chartered tax team.",
     long: "Our tax team is made up of skilled and knowledgeable professionals. The team lead is an Associate Member of the Chartered Institute of Taxation of Nigeria, having passed all requisite stages of the professional certification examination, and gained practical experience at the Lagos State Internal Revenue Service — and is regularly engaged by tax authorities on questions of tax law. His Master's dissertation focused on Transfer Pricing. Most recently, we were part of a team that represented a multinational at the Tax Appeal Tribunal in a dispute against the Federal Inland Revenue Service.",
     bullets: [
@@ -137,7 +145,7 @@ export const TEAM = [
   },
   {
     id: "aa",
-    name: "Abisoye (Josephine) Ajayi",
+    name: "Abisoye Ajayi",
     role: "Legal Associate",
     practice: ["corporate", "estate"],
     location: "Lagos",

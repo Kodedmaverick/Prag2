@@ -14,6 +14,14 @@ function Home({ go }) {
     { k: "Technology & data", t: "Licensing, regulatory and platform obligations for digital business", p: "IT Advisory" },
     { k: "Tax & compliance", t: "Managing tax exposure and resolving disputes with the authorities", p: "Taxation Advisory" },
   ];
+  const placeholderClients = [
+    { name: "Northstar", sub: "Holdings", mark: "N" },
+    { name: "Abeni", sub: "Energy", mark: "A" },
+    { name: "Meridian", sub: "Pay", mark: "M" },
+    { name: "Coastline", sub: "Developments", mark: "C" },
+    { name: "Verity", sub: "Foods", mark: "V" },
+    { name: "Atlas", sub: "Mobility", mark: "A" },
+  ];
 
   return (
     <main className="page-enter">
@@ -126,8 +134,8 @@ function Home({ go }) {
 
           <ul className="xp-index">
             {PRACTICE_AREAS.map((p) => (
-              <li className="xp-row" key={p.id} onClick={() => go("practices")} tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === "Enter") go("practices"); }}>
+              <li className="xp-row" key={p.id} onClick={() => go(`practices/${p.id}`)} tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === "Enter") go(`practices/${p.id}`); }}>
                 <span className="xp-row__num">{p.num}</span>
                 <span className="xp-row__name display">{p.title}</span>
                 <span className="xp-row__desc">{p.short}</span>
@@ -205,7 +213,7 @@ function Home({ go }) {
           </div>
           <div className="people-row">
             {TEAM.slice(0, 3).map((t) => (
-              <button className="person" key={t.id} onClick={() => go("team")}>
+              <button className="person" key={t.id} onClick={() => go(`team/${t.id}`)}>
                 <span className="person__photo">
                   <ImgPlate caption={`${t.name.split(" ")[0]} · portrait`} />
                 </span>
@@ -222,6 +230,28 @@ function Home({ go }) {
               Meet the full team <ArrowRight />
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* placeholder client wall */}
+      <section className="section client-wall reveal" aria-labelledby="client-wall-title">
+        <div className="container">
+          <div className="client-wall__head">
+            <div>
+              <span className="section-num">Client roster / layout preview</span>
+              <h2 id="client-wall-title" className="display">Trusted where the details matter.</h2>
+            </div>
+            <p>Placeholder identities shown for design purposes. Replace these with client-approved logos before publication.</p>
+          </div>
+          <div className="client-wall__grid">
+            {placeholderClients.map((client, index) => (
+              <div className={`client-logo client-logo--${index + 1}`} key={client.name} aria-label={`${client.name} ${client.sub}, placeholder logo`}>
+                <span className="client-logo__mark" aria-hidden="true">{client.mark}</span>
+                <span className="client-logo__word"><strong>{client.name}</strong><small>{client.sub}</small></span>
+              </div>
+            ))}
+          </div>
+          <p className="client-wall__disclaimer">Fictional names and marks — not representations of Prag clients.</p>
         </div>
       </section>
 

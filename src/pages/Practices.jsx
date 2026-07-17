@@ -1,11 +1,9 @@
 import React from "react";
-import { ImgPlate, ArrowRight, ArrowUpRight, PageHead } from "../primitives.jsx";
+import { ImgPlate, ArrowUpRight, PageHead } from "../primitives.jsx";
 import { PRACTICE_AREAS } from "../data.js";
 
 function Practices({ go }) {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
-  const [open, setOpen] = React.useState(null);
-
   return (
     <main className="page-enter">
       <PageHead
@@ -19,11 +17,9 @@ function Practices({ go }) {
       <section className="section">
         <div className="container">
           <div className="practice-list">
-            {PRACTICE_AREAS.map((p) => {
-              const isOpen = open === p.id;
-              return (
+            {PRACTICE_AREAS.map((p) => (
                 <React.Fragment key={p.id}>
-                  <div className="practice-row" onClick={() => setOpen(isOpen ? null : p.id)}>
+                  <div className="practice-row" onClick={() => go(`practices/${p.id}`)} tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") go(`practices/${p.id}`); }}>
                     <div className="practice-row__num">{p.num}</div>
                     <div className="practice-row__title display">{p.title}</div>
                     <div className="practice-row__desc">{p.short}</div>
@@ -31,32 +27,8 @@ function Practices({ go }) {
                       <ArrowUpRight size={16} />
                     </div>
                   </div>
-                  {isOpen ? (
-                    <div className="fade-in" style={{ padding: "28px 0 40px 0", display: "grid", gridTemplateColumns: "64px 2fr 3fr", gap: "clamp(20px, 3vw, 40px)", borderBottom: "1px solid var(--rule)" }}>
-                      <div></div>
-                      <div>
-                        <div className="section-num" style={{ marginBottom: 14 }}>Approach</div>
-                        <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--fg)", maxWidth: "44ch", margin: 0 }}>{p.long}</p>
-                        <div style={{ marginTop: 24 }}>
-                          <a href="#/contact" className="link-arrow" onClick={(e) => { e.preventDefault(); go("contact"); }}>Speak to the practice lead <ArrowRight /></a>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="section-num" style={{ marginBottom: 14 }}>Representative work</div>
-                        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-                          {p.bullets.map((b, i) => (
-                            <li key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start", borderBottom: "1px solid var(--rule)", paddingBottom: 12, fontSize: 15 }}>
-                              <span style={{ width: 6, height: 6, background: "var(--accent)", marginTop: 8, flexShrink: 0 }}></span>
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
                 </React.Fragment>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>

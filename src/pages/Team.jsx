@@ -61,7 +61,7 @@ function Team({ go }) {
 
           <div className="team-grid">
             {filtered.map((t) => (
-              <button key={t.id} className="team-card" onClick={() => setActive(t)}>
+              <button key={t.id} className="team-card" onClick={() => go(`team/${t.id}`)} aria-label={`View ${t.name}'s profile`}>
                 <div className="team-card__photo">
                   <div className="portrait-mark" aria-hidden="true">
                     <span>{t.name.split(" ").map((part) => part[0]).slice(0, 2).join("")}</span>

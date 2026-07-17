@@ -15,6 +15,8 @@ The following project assets were generated with the built-in OpenAI image gener
 
 - `public/assets/prag-hero-editorial.png`
 - `public/assets/prag-collaboration-editorial.png`
+- `public/assets/practice-real-estate.png`
+- `public/assets/practice-technology.png`
 
 The images depict representative professional scenes. They are not photographs of Prag employees and must not be captioned or presented as named team members.
 
@@ -31,7 +33,11 @@ The supplied project contains claims that should be confirmed before publishing,
 - All insight titles, authors and publication dates
 - Open career roles
 
-Four current team profiles were verified through the client-authorised signed-in LinkedIn session and added or updated: Olanrewaju Jolaoso, Oluwatimilehin B. Omotayo, Omolade Ajila and Abisoye (Josephine) Ajayi. Ayantunde Joshua was not added because his profile shows that his employment with Prag ended in May 2024.
+Four current team profiles were verified through the client-authorised signed-in LinkedIn session and added or updated: Olanrewaju Jolaoso, Oluwatimilehin B. Omotayo, Omolade Ajila and Abisoye Ajayi. Ayantunde Joshua was not added because his profile shows that his employment with Prag ended in May 2024.
+
+Dedicated routes were added for every team member and practice area. Each practice page has a wide editorial image before the body copy, an expertise list and key contacts. The desktop header has an accessible Expertise dropdown linking directly to these pages, with a tap-friendly accordion on mobile. The primary brand accent was changed from burgundy to `#33368E`.
+
+The homepage client-logo wall is fictional placeholder content for layout demonstration only. Replace every name and mark with client-approved material before publishing.
 
 ## Image-generation prompts
 
